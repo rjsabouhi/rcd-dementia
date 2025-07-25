@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(page_title="PharmaSynth: RCD Drug Generator", layout="wide")
-st.title("🧪 PharmaSynth: RCD Drug Generator")
+st.title("PharmaSynth: RCD Drug Generator")
 
 st.sidebar.header("Symbolic Intent Input")
 intent = st.sidebar.text_area("Describe the symbolic drug purpose:", 
@@ -26,7 +26,7 @@ disease_context = st.sidebar.selectbox("Disease Context", [
 ])
 
 st.sidebar.markdown("---")
-if st.sidebar.button("🔍 Search Symbolic-Pharmacological Matches"):
+if st.sidebar.button("Search Symbolic-Pharmacological Matches"):
     st.session_state.search_triggered = True
 
 # Mock compound database
@@ -54,10 +54,10 @@ compound_data = pd.DataFrame({
 })
 
 if st.session_state.get("search_triggered", False):
-    st.subheader(f"🔬 Symbolic Pharmacological Matches for: *{intent}*")
+    st.subheader(f"Symbolic Pharmacological Matches for: *{intent}*")
     st.dataframe(compound_data.sort_values("Symbolic Action Fit", ascending=False), use_container_width=True)
 
-    st.markdown("### 💊 Design a New Synthetic Compound?")
+    st.markdown("### Design a New Synthetic Compound?")
     if st.button("Launch Molecule Sketch Module"):
         st.markdown("*Synthetic compound design coming soon...*")
 
